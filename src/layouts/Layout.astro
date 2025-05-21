@@ -1,22 +1,58 @@
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Portafolio Juan Felipe Franco</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  :root {
+    --background: #ffffff;
+    --background-gradient: linear-gradient(135deg, #13151a 0%, #090b11 100%);
+    --text: #000000;
+    --text-secondary: #666666;
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --surface: #f8f8f8;
+    --surface-2: #e5e5e5;
+    --shadow: rgba(0, 0, 0, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #003153;
+      --background-image: linear-gradient(315deg, #003153 0%, #1b1b1b 74%);
+	  --background-secondary: #3f3872;
+	  --background-image-secondary:linear-gradient(315deg, #3f3872 0%, #0c0c0c 74%);
+      --text: #ffffff;
+      --text-secondary: #a3a3a3;
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --surface: #1e1e1e;
+      --surface-2: #2e2e2e;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+	font-family: 'Raleway', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background);
+    background-image: var(--background-image);
+    color: var(--text);
+    min-height: 100vh;
+  }
 </style>
