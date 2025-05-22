@@ -1,3 +1,7 @@
+---
+import ScrollToTop from "../components/ScrollToTop.astro"
+---
+
 <!doctype html>
 <html lang='en'>
   <head>
@@ -12,6 +16,7 @@
   </head>
   <body>
     <slot />
+	<ScrollToTop />
   </body>
 </html>
 
@@ -26,6 +31,7 @@
     --surface: #f8f8f8;
     --surface-2: #e5e5e5;
     --shadow: rgba(0, 0, 0, 0.1);
+	scroll-behavior: smooth;
   }
 
   @media (prefers-color-scheme: dark) {

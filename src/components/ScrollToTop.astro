@@ -1,0 +1,81 @@
+---
+import { ArrowUp } from '@lucide/astro'
+---
+
+<button class="scroll-to-top" aria-label="Volver arriba">
+  <ArrowUp />
+</button>
+
+<style>
+  .scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--surface);
+    color: var(--text);
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 99;
+    box-shadow: 0 2px 4px var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .scroll-to-top:hover {
+    background-color: var(--surface-2);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 8px var(--shadow);
+  }
+
+  .scroll-to-top.visible {
+    opacity: 0;
+    visibility: visible;
+    animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  const scrollButton = document.querySelector('.scroll-to-top')
+  const heroSection = document.querySelector('#inicio')
+
+  function toggleScrollButton() {
+    if (!heroSection || !scrollButton) return
+
+    const heroBottom = heroSection.getBoundingClientRect().bottom
+    
+    if (heroBottom <= 0) {
+      scrollButton.classList.add('visible')
+    } else {
+      scrollButton.classList.remove('visible')
+    }
+  }
+
+  scrollButton?.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
+
+  window.addEventListener('scroll', toggleScrollButton)
+  toggleScrollButton()
+</script>
