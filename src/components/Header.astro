@@ -1,5 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
 import { Menu, X, Download } from '@lucide/astro'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <header>
@@ -12,19 +16,23 @@ import { Menu, X, Download } from '@lucide/astro'
         <X />
       </button>
       <ul>
-        <li><a href='#inicio'>Inicio</a></li>
+        <li><a href='#inicio'>{t('header.home')}</a></li>
         <hr class='divider' />
-        <li><a href='#about-me'>Sobre Mi</a></li>
+        <li><a href='#about-me'>{t('header.about')}</a></li>
         <hr class='divider' />
-        <li><a href='#projects'>Proyectos</a></li>
+        <li><a href='#projects'>{t('header.projects')}</a></li>
         <hr class='divider' />
       </ul>
 
       <div class='bottom-part'>
         <hr class='bottom-divider' />
-        <a href='/CV_Juan_Felipe_Franco.pdf' download class='download-cv'>
+        <a
+          href={`/CV_Juan_Felipe_Franco_${lang}.pdf`}
+          download
+          class='download-cv'
+        >
           <Download size={24} />
-          Descargar CV
+          {t('header.downloadCV')}
         </a>
       </div>
     </nav>

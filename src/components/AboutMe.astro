@@ -1,19 +1,20 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { Code, Brain, Rocket } from '@lucide/astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="about-me" id="about-me">
     <div class="container">
-        <h2>Sobre mí</h2>
+        <h2>{t('about.title')}</h2>
 
         <div class="about-content">
             <div class="bio">
-                <p class="highlight">+2.5 años de experiencia en desarrollo web</p>
+                <p class="highlight">{t('about.highlight')} </p>
                 <p>
-                    Soy un desarrollador apasionado por crear experiencias web excepcionales. 
-                    Mi enfoque combina creatividad técnica con un fuerte compromiso por la calidad del código. 
-                    Me especializo en tecnologías frontend modernas y estoy constantemente explorando nuevas formas 
-                    de mejorar la experiencia del usuario.
+                    {t('about.description')}
                 </p>
             </div>
         </div>
@@ -21,20 +22,20 @@ import { Code, Brain, Rocket } from '@lucide/astro';
         <div class="skills-grid">
             <div class="skill-card">
                 <Code size={24} />
-                <h3>Arquitectura Frontend</h3>
-                <p>Diseño y desarrollo de arquitecturas escalables usando patrones de diseño y mejores prácticas de la industria.</p>
+                <h3>{t('about.title.card.1')}</h3>
+                <p>{t('about.description.card.1')}</p>
             </div>
 
             <div class="skill-card">
                 <Brain size={24} />
-                <h3>Resolución de Problemas</h3>
-                <p>Enfoque analítico para encontrar soluciones eficientes y escalables a desafíos técnicos.</p>
+                <h3>{t('about.title.card.2')}</h3>
+                <p>{t('about.description.card.2')}</p>
             </div>
 
             <div class="skill-card">
                 <Rocket size={24} />
-                <h3>Aprendizaje Continuo</h3>
-                <p>Constantemente actualizándome en nuevas tecnologías y mejores prácticas de desarrollo.</p>
+                <h3>{t('about.title.card.3')}</h3>
+                <p>{t('about.description.card.3')}</p>
             </div>
         </div>
     </div>
